@@ -1,7 +1,8 @@
 import { Context } from 'telegraf';
 
 export interface SessionData {
-  boolean: boolean;
+  variable1: boolean;
+  variable2: boolean;
 }
 
 export interface IBotContext extends Context {
