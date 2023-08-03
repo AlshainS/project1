@@ -1,5 +1,5 @@
 import { Telegraf } from "telegraf";
-import { IBotContext } from "../config/context.inteface";
+import { IBotContext } from "../context/context.inteface";
 
 export abstract class Command {
   constructor(public bot: Telegraf<IBotContext>) {}
