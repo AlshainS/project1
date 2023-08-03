@@ -1,12 +1,16 @@
 {
   "name": "bot3",
   "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "node ./dict/app.ts",
+    "start": "node ./dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
     "@types/node": "^20.4.6",
