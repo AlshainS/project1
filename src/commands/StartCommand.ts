@@ -11,8 +11,8 @@ export class StartCommand extends Command {
   handle(): void {
     this.bot.start((ctx) => {
       ctx.reply("Чем я могу вам помочь?", Markup.inlineKeyboard([
-        Markup.button.callback("Информация о предстоящих конференциях", "action_get_events"),
-        Markup.button.callback("Подписаться на конференцию", "action_subscribe"),
+        Markup.button.callback("Информация о событиях", "action_get_events"),
+        Markup.button.callback("Подписаться на событие", "action_subscribe"),
       ]))
     })
 
@@ -29,7 +29,7 @@ export class StartCommand extends Command {
       }
 
       // TODO: change behavior of old message with already selected option 
-      ctx.editMessageText('');
+      ctx.editMessageText('Behavior WIP');
       let confs = arr.map(item => Markup.button.callback(item.location, `action_get_info${item._id}`));
       ctx.reply("Какая именно конференция интересует?", Markup.inlineKeyboard([
         ...confs
