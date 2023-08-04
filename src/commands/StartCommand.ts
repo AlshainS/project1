@@ -1,30 +1,44 @@
-import { Markup, Telegraf } from "telegraf";
+import { Markup } from "telegraf";
 import { Command } from "./Command";
-import { IBotContext } from "../context/BotContext.interface";
+import { TelegramBot, Event } from "../types";
 
 export class StartCommand extends Command {
   
-  constructor(bot: Telegraf<IBotContext>) {
+  constructor(bot: TelegramBot) {
     super(bot);
   }
   
   handle(): void {
     this.bot.start((ctx) => {
-      console.log(ctx.session);
-      ctx.reply("Hello, select action:", Markup.inlineKeyboard([
-        Markup.button.callback("Action 1", "action_1_fire"),
-        Markup.button.callback("Action 2", "action_2_fire"),
+      ctx.reply("Чем я могу вам помочь?", Markup.inlineKeyboard([
+        Markup.button.callback("Информация о предстоящих конференциях", "action_get_events"),
+        Markup.button.callback("Подписаться на конференцию", "action_subscribe"),
       ]))
     })
 
-    this.bot.action("action_1_fire", (ctx) => {
-      ctx.session.variable1 = true;
-      ctx.editMessageText("Nice!");
+    this.bot.action("action_get_events", async (ctx) => {
+      let arr: Event[] = [];
+      
+      if(this.bot.db) {
+        const collection = this.bot.db.collection<Event>("events");
+        const cursor = collection.find();
+
+        for await (const doc of cursor) {
+          arr.push({...doc});
+        }
+      }
+
+      ctx.editMessageText('');
+      let confs = arr.map(item => Markup.button.callback(item.location, `action_get_info${item._id}`));
+      ctx.reply("Какая именно конференция интересует?", Markup.inlineKeyboard([
+        ...confs
+      ]))
+
+      // TODO: generate handlers for each generated button
     })
 
-    this.bot.action("action_2_fire", (ctx) => {
-      ctx.session.variable2 = true;
-      ctx.editMessageText("Not nice.");
+    this.bot.action("action_subscribe", (ctx) => {
+      ctx.editMessageText("WIP");
     })
 
   }
