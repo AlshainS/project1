@@ -28,6 +28,7 @@ export class StartCommand extends Command {
         }
       }
 
+      // TODO: change behavior of old message with already selected option 
       ctx.editMessageText('');
       let confs = arr.map(item => Markup.button.callback(item.location, `action_get_info${item._id}`));
       ctx.reply("Какая именно конференция интересует?", Markup.inlineKeyboard([
