@@ -31,3 +31,10 @@ For development environment use:
 npm i
 npm run dev
 ```
+
+## Roadmap
+
+- [ ] Fill Miro board with Bot workflow concept
+- [ ] Add Documentation & Conventions document
+
+See the [open issues](https://github.com/AlshainS/project1/issues) for a full list of proposed features (and known issues).
