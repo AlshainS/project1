@@ -14,8 +14,8 @@ MONGO_USERNAME=
 MONGO_PASSWORD=
 ```
 
-`BOT_TOKEN` can be obtained from the [@BotFather](https://t.me/botfather) bot in Telegram.
-`MONGO_USERNAME` and `MONGO_PASSWORD` will be shared in team's Rocket chat.
+- `BOT_TOKEN` can be obtained from the [@BotFather](https://t.me/botfather) bot in Telegram.
+- `MONGO_USERNAME` and `MONGO_PASSWORD` will be shared in team's Rocket chat.
 
 Install the dependencies and devDependencies and start the project:
 
