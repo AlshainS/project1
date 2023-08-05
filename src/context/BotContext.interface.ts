@@ -1,8 +1,8 @@
 import { Context } from 'telegraf';
 
 export interface SessionData {
-  variable1: boolean;
-  variable2: boolean;
+  userId: number | undefined;
+  selectedConf: number | undefined;
 }
 
 export interface IBotContext extends Context {

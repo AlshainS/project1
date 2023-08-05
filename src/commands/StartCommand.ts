@@ -18,6 +18,9 @@ export class StartCommand extends Command {
 
     this.bot.action("action_get_events", async (ctx) => {
       let arr: Event[] = [];
+
+      // Save user id to session
+      ctx.session.userId = ctx.from?.id;
       
       if(this.bot.db) {
         const collection = this.bot.db.collection<Event>("events");
@@ -30,10 +33,10 @@ export class StartCommand extends Command {
 
       // TODO: change behavior of old message with already selected option 
       ctx.editMessageText('Behavior WIP');
-      let confs = arr.map(item => Markup.button.callback(item.location, `action_get_info${item._id}`));
+      let confs = arr.map(item => Markup.button.callback(item.location, `action_get_info_${item._id}`));
       ctx.reply("Какая именно конференция интересует?", Markup.inlineKeyboard([
         ...confs
-      ]))
+      ]));
 
       // TODO: generate handlers for each generated button
     })
