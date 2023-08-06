@@ -6,5 +6,5 @@ WORKDIR /code
 COPY ["package.json", "package-lock.json*", "./"]
 RUN npm i
 COPY . .
-CMD ["npm", "run", "build"]
-CMD ["npm", "run", "start"]
+RUN npm run build
+CMD ["npm", "start"]
