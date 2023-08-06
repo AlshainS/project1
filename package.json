@@ -5,10 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "node ./dist/app.js",
-    "compile": "tsc && node ./dist/app.js",
-    "dev": "nodemon -e ts --exec \"npm run compile\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsc && node ./dist/app.js",
+    "dev": "nodemon -e ts --exec \"tsc && node ./dist/app.js\""
   },
   "keywords": [],
   "author": "",
