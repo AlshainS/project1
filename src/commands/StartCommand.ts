@@ -39,5 +39,9 @@ export class StartCommand extends Command {
 
     // Action: Participate in selected event
     participate(this.bot);
+
+    // Enable graceful stop
+    process.once('SIGINT', () => this.bot.stop('SIGINT'));
+    process.once('SIGTERM', () => this.bot.stop('SIGTERM'));
   }
 }
